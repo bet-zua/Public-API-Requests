@@ -14,7 +14,7 @@ fetch ('https://randomuser.me/api/?results=12&nat=us')
         handleSearch(data.results);
         handleModalWindow(data.results);
     })
-// fetch helper function to handle errors
+//fetch helper function to handle errors
 function checkStatus(response){
 	if(response.ok){
 		return Promise.resolve(response);
@@ -39,9 +39,9 @@ function createPage(employeeData){
     </form>
     `;
     searchContainer.insertAdjacentHTML('beforeend', search);
-    // display employee data
+    //display employee data
     displayData(employeeData);
-    // create modal window
+    //create modal window
     const modal = `
     <div class="modal-container" id="modal">
         <div class="modal">
@@ -160,7 +160,7 @@ function handleSearch(employeeData){
         displayData(matches);
         handleModalWindow(matches);
       });
-      //handle real time typing 
+    //handle real time typing 
     searchBar.addEventListener('keyup', (e)=>{
         const matches = [];
         const search = document.getElementById('search-input').value.toLowerCase();
