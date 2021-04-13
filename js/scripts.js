@@ -141,7 +141,7 @@ function updateModalWindow(employee){
 
 /* 
  * Extra Credit: search functionality allows user to filter directory by name
- * 
+ * Features real-time typing employee filtration
  */
 function handleSearch(employeeData){
     const searchButton = document.getElementById('search-submit');
@@ -161,7 +161,7 @@ function handleSearch(employeeData){
         handleModalWindow(matches);
       });
       //handle real time typing 
-      searchBar.addEventListener('keyup', (e)=>{
+    searchBar.addEventListener('keyup', (e)=>{
         const matches = [];
         const search = document.getElementById('search-input').value.toLowerCase();
         employeeData.forEach(employee => {
