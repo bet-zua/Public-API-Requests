@@ -39,9 +39,9 @@ function createPage(employeeData){
     </form>
     `;
     searchContainer.insertAdjacentHTML('beforeend', search);
-    //display employee data
+    // display employee data
     displayData(employeeData);
-    //create modal window
+    // create modal window
     const modal = `
     <div class="modal-container" id="modal">
         <div class="modal">
@@ -102,6 +102,7 @@ function handleModalWindow(data){
     exitModal.addEventListener('click', (e)=>{
         modalWindow.hidden = true;
     });
+    
     //extra credit: handle toggle, looping through employees
     prevBtn.addEventListener('click', (e)=>{
         if(employeeIndex > 0) {
@@ -122,11 +123,12 @@ function handleModalWindow(data){
 }
 
 function updateModalWindow(employee){
-    //formats phone number & birthday
+    // formats phone number & birthday
     let phoneNum = employee.phone.toString();
     phoneNum = phoneNum.substring(0,5)+' '+phoneNum.substring(6,);
     let bday = employee.dob.date.substring(0, 10);
     bday = bday.substring(5,7)+'/'+bday.substring(8,)+'/'+bday.substring(0,4);
+    // updates window with employee's details
     document.getElementById('modal-info').innerHTML = `
     <img class="modal-img" src="${employee.picture.large}" alt="profile picture">
     <h3 id="name" class="modal-name cap">${employee.name.first} ${employee.name.last}</h3>
@@ -156,7 +158,6 @@ function handleSearch(employeeData){
             }
         });
         gallery.innerHTML=" ";
-        console.log(matches);
         displayData(matches);
         handleModalWindow(matches);
       });
