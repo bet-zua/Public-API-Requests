@@ -7,7 +7,7 @@ The user may click the arrow buttons to toggle back and forth between employee p
 The user may also search employees by name.
 
 Additional Features:
-* Search Functionality - directory can be filtered by name
+* Search Functionality - directory can be filtered by name in real-time
 * Modal Toggle - allows user to toggle back and forth between employees
 * Customized font, text color, background color, box shadows, and modal window background image
         Modal window background image source: 

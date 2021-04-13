@@ -102,7 +102,6 @@ function handleModalWindow(data){
     exitModal.addEventListener('click', (e)=>{
         modalWindow.hidden = true;
     });
-    
     //extra credit: handle toggle, looping through employees
     prevBtn.addEventListener('click', (e)=>{
         if(employeeIndex > 0) {
@@ -146,7 +145,7 @@ function updateModalWindow(employee){
  */
 function handleSearch(employeeData){
     const searchButton = document.getElementById('search-submit');
-
+    const searchBar = document.getElementById('search-input');
     searchButton.addEventListener('click', (e)=>{
         const matches = [];
         const search = document.getElementById('search-input').value.toLowerCase();
@@ -161,4 +160,19 @@ function handleSearch(employeeData){
         displayData(matches);
         handleModalWindow(matches);
       });
+      //handle real time typing 
+      searchBar.addEventListener('keyup', (e)=>{
+        const matches = [];
+        const search = document.getElementById('search-input').value.toLowerCase();
+        employeeData.forEach(employee => {
+            const firstName = employee.name.first.toLowerCase();
+            const lastName = employee.name.last.toLowerCase();
+            if(firstName.includes(search) || lastName.includes(search)){
+                matches.push(employee);
+            }
+        });
+        gallery.innerHTML=" ";
+        displayData(matches);
+        handleModalWindow(matches);
+    });
 }
