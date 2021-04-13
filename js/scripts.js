@@ -14,9 +14,7 @@ fetch ('https://randomuser.me/api/?results=12&nat=us')
         handleSearch(data.results);
         handleModalWindow(data.results);
     })
-//-------------------
-// Helper Function
-//-------------------
+// fetch helper function to handle errors
 function checkStatus(response){
 	if(response.ok){
 		return Promise.resolve(response);
@@ -26,7 +24,8 @@ function checkStatus(response){
 }
     
 /* 
- * Displays the info on the page
+ * Creates the intitial page by creating the search box, displaying employee data,
+ * and creating a modal window which is hidden by default.
  * 
  * Extra Credit: API request returns only US users to allow searching by name
  */
@@ -42,7 +41,7 @@ function createPage(employeeData){
     searchContainer.insertAdjacentHTML('beforeend', search);
     //display employee data
     displayData(employeeData);
-    //create modal window, hidden by default
+    //create modal window
     const modal = `
     <div class="modal-container" id="modal">
         <div class="modal">
@@ -81,8 +80,8 @@ function displayData(data){
 }
 
 /* 
- * Creates a modal window that pops up when any part of an employee item is clicked.
- * Close modal window by ...
+ * Handles the modal window which pops up when any part of an employee item is clicked.
+ * Opens, closes window, and handles toggle functionality.
  * 
  * Extra Credit: Toggle feature allows to switch between employees in modal window
  */
@@ -96,7 +95,6 @@ function handleModalWindow(data){
         card.addEventListener('click', ()=> {
             employeeIndex = i;
             updateModalWindow(data[i]);
-            //show modal window w/employee's card's details
             modalWindow.hidden = false;
         });
     });
